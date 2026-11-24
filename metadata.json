@@ -1,0 +1,8 @@
+{
+  "name": "Smart AI",
+  "description": "Smart AI - Your personal AI assistant with multi-turn chat, high-thinking reasoning, voice conversations, multimodal image & video analysis, image generation, search grounding, and cloud-synced history.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

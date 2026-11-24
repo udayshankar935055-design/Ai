@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Smart AI</string>
+    <string name="app_tagline">Your Personal AI Assistant</string>
+    <string name="welcome_title">How can I help you today?</string>
+    <string name="welcome_subtitle">Ask anything in English, Hindi, or any language — reason deeply, search live, analyze media, or create visuals.</string>
+    <string name="guest_mode_label">Guest Mode</string>
+    <string name="offline_banner">No internet connection. Local history is available; AI responses require connectivity.</string>
+    <string name="new_chat">New Chat</string>
+    <string name="chat_history">Chat History</string>
+    <string name="image_studio">Image Studio</string>
+    <string name="live_voice">Live Voice</string>
+    <string name="settings">Settings</string>
+    <string name="input_placeholder">Ask Smart AI anything…</string>
+    <string name="mic_permission_required">Microphone permission is needed for voice transcription and live voice conversations.</string>
+    <string name="export_save_txt">Save as .txt File</string>
+    <string name="export_share_txt">Share as .txt File</string>
+    <string name="export_success">Conversation exported as text file</string>
+    <string name="export_nothing_to_export">Send a message first before exporting the conversation.</string>
+    <string name="share_response">Share response</string>
+</resources>

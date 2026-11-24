@@ -1,0 +1,108 @@
+{
+  "entities": {
+    "Conversation": {
+      "title": "Conversation",
+      "description": "A user's AI chat conversation thread.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated Firebase UID of the conversation owner."
+        },
+        "title": {
+          "type": "string",
+          "description": "Display title of the conversation (1 to 120 characters)."
+        },
+        "modelMode": {
+          "type": "string",
+          "enum": ["GENERAL", "DEEP_THINKING", "FAST", "SEARCH", "MULTIMODAL"],
+          "description": "Selected Gemini AI assistant mode for this conversation."
+        },
+        "lastMessagePreview": {
+          "type": "string",
+          "description": "Truncated preview of the latest message (up to 200 characters)."
+        },
+        "messageCount": {
+          "type": "integer",
+          "description": "Number of messages in the conversation."
+        },
+        "pinned": {
+          "type": "boolean",
+          "description": "Whether the conversation is pinned."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when conversation was created (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when conversation was last updated (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": ["userId", "title", "modelMode", "lastMessagePreview", "messageCount", "pinned", "createdAt", "updatedAt"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "An individual message within a conversation.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated Firebase UID of the owner."
+        },
+        "conversationId": {
+          "type": "string",
+          "description": "Parent conversation document ID."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["user", "model"],
+          "description": "Message author role."
+        },
+        "text": {
+          "type": "string",
+          "description": "Message text content."
+        },
+        "thoughtText": {
+          "type": "string",
+          "description": "Optional reasoning summary when High Thinking mode is enabled."
+        },
+        "modelId": {
+          "type": "string",
+          "description": "Gemini model identifier used to produce or handle this message."
+        },
+        "attachmentType": {
+          "type": "string",
+          "enum": ["IMAGE", "VIDEO", "AUDIO", "GENERATED_IMAGE"],
+          "description": "Optional attachment category."
+        },
+        "attachmentLabel": {
+          "type": "string",
+          "description": "Optional attachment descriptor."
+        },
+        "sources": {
+          "type": "array",
+          "description": "Optional search grounding source citations (up to 10)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when message was persisted (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": ["userId", "conversationId", "role", "text", "modelId", "sources", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/conversations/{conversationId}": {
+      "schema": { "$ref": "#/entities/Conversation" },
+      "description": "User-scoped AI chat conversations."
+    },
+    "/users/{userId}/conversations/{conversationId}/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/ChatMessage" },
+      "description": "Messages belonging to a user's conversation."
+    }
+  }
+}
